@@ -19,6 +19,7 @@ case $OSTYPE in
     ;;
 esac
 
+<<<<<<< HEAD
 if [ ! -z "$(command ls "${BASH_IT}/enabled/"{[0-9][0-9][0-9]${BASH_IT_LOAD_PRIORITY_SEPARATOR}docker,docker}.plugin.bash 2>/dev/null | head -1)" ]; then
 # Function aliases from docker plugin:
     alias dkrmlc='docker-remove-most-recent-container'  # Delete most recent (i.e., last) Docker container
@@ -39,3 +40,11 @@ alias dkrit='docker run --rm -it '
 alias dkip='docker image prune -a -f'
 alias dkvp='docker volume prune -f'
 alias dksp='docker system prune -a -f'
+=======
+alias dkrmall='docker-remove-stale-assets'  # Delete all untagged images and exited containers
+alias dkrmli='docker-remove-most-recent-image'  # Delete most recent (i.e., last) Docker image
+alias dkrmi='docker rmi $*'  # Delete images for supplied IDs or all if no IDs are passed as arguments
+alias dkideps='docker-image-dependencies'  # Output a graph of image dependencies using Graphiz
+alias dkre='docker-runtime-environment'  # List environmental variables of the supplied image ID
+alias dkelc='docker exec -it `dklcid` bash' # Enter last container (works with Docker 1.3 and above)
+>>>>>>> fb85629981e3b6da404a36184e891c0c107dce55
