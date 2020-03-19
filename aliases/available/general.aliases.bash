@@ -59,11 +59,6 @@ alias dow='cd $HOME/Downloads' # Go to the Downloads directory
 # Shell History
 alias h='history'
 
-# Tree
-if ! _command_exists tree; then
-	alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-fi
-
 # Directory
 alias md='mkdir -p'
 alias rd='rmdir'
