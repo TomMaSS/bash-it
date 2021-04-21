@@ -28,22 +28,25 @@ bash_it.sh
 
 # themes
 #
-themes/agnoster
 themes/90210
-themes/powerline
-themes/barbuk
+themes/agnoster
 themes/atomic
 themes/axin
-themes/base.theme.bash
 themes/bakke
+themes/barbuk
+themes/base.theme.bash
 themes/binaryanomaly
 themes/bira
 themes/bobby
 themes/bobby-python
 themes/brainy
 themes/brunton
+themes/candy
 themes/command_duration.theme.bash
+themes/easy
 themes/modern
+themes/powerline
+themes/purity
 
 # plugins
 #
@@ -82,6 +85,7 @@ completion/available/kubectl.completion.bash
 completion/available/lerna.completion.bash
 completion/available/minikube.completion.bash
 completion/available/notify-send.completion.bash
+completion/available/ngrok.completion.bash
 completion/available/npm.completion.bash
 completion/available/packer.completion.bash
 completion/available/pip.completion.bash
