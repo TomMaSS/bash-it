@@ -74,6 +74,8 @@ _command_exists 'extract' \
 alias svim='sudo "${VISUAL:-vim}"'
 alias snano='sudo "${ALTERNATE_EDITOR:-nano}"'
 
+alias dfh="df -h | grep -v docker"
+
 # Display whatever file is regular file or folder
 function catt() {
 	for i in "$@"; do
