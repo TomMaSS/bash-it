@@ -75,6 +75,8 @@ alias xt="extract"
 alias svim="sudo vim"
 alias snano="sudo nano"
 
+alias dfh="df -h | grep -v docker"
+
 # Display whatever file is regular file or folder
 catt() {
   for i in "$@"; do
