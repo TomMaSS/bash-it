@@ -12,7 +12,7 @@ fi
 # List directory contents
 alias sl=ls
 alias la='ls -AF'       # Compact view, show hidden
-alias ll='ls -al'
+alias ll='ls -lah'
 alias l='ls -a'
 alias l1='ls -1'
 
@@ -64,12 +64,6 @@ alias -- -='cd -'        # Go back
 # Shell History
 alias h='history'
 
-# Tree
-if ! _command_exists tree
-then
-  alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-fi
-
 # Directory
 alias md='mkdir -p'
 alias rd='rmdir'
@@ -80,6 +74,8 @@ alias xt="extract"
 # sudo editors
 alias svim="sudo vim"
 alias snano="sudo nano"
+
+alias dfh="df -h | grep -v docker"
 
 # Display whatever file is regular file or folder
 catt() {

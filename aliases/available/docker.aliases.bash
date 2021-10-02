@@ -9,6 +9,7 @@ alias dkps='docker ps'  # List running Docker containers
 alias dkpsa='docker ps -a'  # List all Docker containers
 alias dki='docker images'  # List Docker images
 alias dkrmac='docker rm $(docker ps -a -q)'  # Delete all Docker containers
+alias dklg='docker logs -f $@'
 
 case $OSTYPE in
   darwin*|*bsd*|*BSD*)
