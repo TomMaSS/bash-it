@@ -1,12 +1,9 @@
-cite about-alias
+# shellcheck shell=bash
 about-alias 'general aliases'
 
-if ls --color -d . &> /dev/null
-then
-  alias ls="ls --color=auto"
-elif ls -G -d . &> /dev/null
-then
-  alias ls='ls -G'        # Compact view, show colors
+if command ls --color -d . &> /dev/null; then
+	alias ls='ls --color=auto'
+	# BSD `ls` doesn't need an argument (`-G`) when `$CLICOLOR` is set.
 fi
 
 # List directory contents
@@ -15,36 +12,34 @@ alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -lah'
 alias l='ls -a'
 alias l1='ls -1'
+alias lf='ls -F'
 
-alias _="sudo"
+alias _='sudo'
 
 # Shortcuts to edit startup files
-alias vbrc="vim ~/.bashrc"
-alias vbpf="vim ~/.bash_profile"
+alias vbrc='${VISUAL:-vim} ~/.bashrc'
+alias vbpf='${VISUAL:-vim} ~/.bash_profile'
 
 # colored grep
 # Need to check an existing file for a pattern that will be found to ensure
 # that the check works when on an OS that supports the color option
-if grep --color=auto "a" "${BASH_IT}/"*.md &> /dev/null
-then
-  alias grep='grep --color=auto'
+if command grep --color=auto "a" "${BASH_IT?}"/*.md &> /dev/null; then
+	alias grep='grep --color=auto'
 fi
 
-if _command_exists gshuf
-then
-  alias shuf=gshuf
+if _command_exists gshuf; then
+	alias shuf=gshuf
 fi
 
 alias c='clear'
-alias k='clear'
 alias cls='clear'
 
-alias edit="$EDITOR"
-alias pager="$PAGER"
+alias edit='${EDITOR:-${ALTERNATE_EDITOR:-nano}}'
+alias pager='${PAGER:=less}'
 
 alias q='exit'
 
-alias irc="${IRC_CLIENT:=irc}"
+alias irc='${IRC_CLIENT:=irc}'
 
 # Language aliases
 alias rb='ruby'
@@ -64,28 +59,31 @@ alias -- -='cd -'        # Go back
 # Shell History
 alias h='history'
 
+# Tree
+if ! _command_exists tree; then
+	alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+fi
+
 # Directory
 alias md='mkdir -p'
 alias rd='rmdir'
 
 # Shorten extract
-alias xt="extract"
+alias xt='extract'
 
-# sudo editors
-alias svim="sudo vim"
-alias snano="sudo nano"
+alias dfh="df -h | grep -v docker"
 
 alias dfh="df -h | grep -v docker"
 
 # Display whatever file is regular file or folder
-catt() {
-  for i in "$@"; do
-    if [ -d "$i" ]; then
-      ls "$i"
-    else
-      cat "$i"
-    fi
-  done
+function catt() {
+	for i in "$@"; do
+		if [[ -d "$i" ]]; then
+			ls "$i"
+		else
+			cat "$i"
+		fi
+	done
 }
 
 # The Bash-it aliases were moved to the `bash-it.aliases.bash` file. The intent of this
@@ -94,5 +92,5 @@ catt() {
 # aliases and enable just the ones for Bash-it explicitly:
 # bash-it disable alias general
 # bash-it enable alias bash-it
-# shellcheck source=./bash-it.aliases.bash
+# shellcheck source-path=SCRIPTDIR
 source "$BASH_IT/aliases/available/bash-it.aliases.bash"
